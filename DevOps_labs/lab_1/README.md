@@ -9,6 +9,26 @@ sudo apt-get update
 sudo apt install openssh-service
 ```
 
-Далее на компьютерах разрешим устройствам извне кодключаться к нему.
-![image](https://github.com/NorthPole0499/Cloud_Technologies/assets/76227471/ab2d0165-cc42-4947-bc68-bf3fe8161d57)
+Далее на компьютере с MacOs в "Системных настройках" -> "Общий доступ" -> "Дополнительно" включим "Удаленный вход", чтобы устройствам извне разрешить кодключаться к компьютеру через openssh. Скопируем user@ip для доступа с других компьютеров.
+![image](https://github.com/NorthPole0499/Cloud_Technologies/assets/52665965/2fab9f44-d359-4d5e-996d-a16d97d2315c)
+
+Создадим файл на компютере А:
+```
+echo "hello world" >> test.txt
+```
+
+Скопируем файл test.txt на компьютер Б в домашнюю директорию ~:
+```
+scp test.txt user@ip:~
+```
+![image](https://github.com/NorthPole0499/Cloud_Technologies/assets/52665965/64e070aa-b549-494d-9d52-5be926a7bbc0)
+
+Теперь, используя компьютер C, попробуем скачать с компьютера Б файл test.txt:
+```
+scp user@ip:~/test.txt .
+```
+![image](https://github.com/NorthPole0499/Cloud_Technologies/assets/52665965/e4e233a7-65db-4232-bfe8-94c14a617091)
+
+Таким образом, у нас получилось успешно перенести файл с одного компьютера на другой, используя третий.
+
 
